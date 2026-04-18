@@ -1,19 +1,669 @@
- <section id="visit">
-    <div class="card">
-      <h2>Visit Us</h2>
-      <p>Come and explore the farm, enjoy the space and keep up with what’s happening throughout the year.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dorchester Community Farm</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #f3f0ea;
+      --warm: #e8e1d6;
+      --olive: #7a8b4b;
+      --olive-dark: #67753f;
+      --charcoal: #232321;
+      --text: #3e3d39;
+      --white: #ffffff;
+      --line: rgba(122, 139, 75, 0.35);
+      --max: 1100px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--text);
+      font-family: "Inter", sans-serif;
+      line-height: 1.7;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(243, 240, 234, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      background: var(--olive);
+      border-radius: 0;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 18px;
+    }
+
+    .brand-text {
+      line-height: 1.1;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.9rem;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+    }
+
+    .brand-text span {
+      display: block;
+      color: var(--olive);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.82rem;
+      margin-top: 4px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      font-size: 0.96rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--olive-dark);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 88vh;
+      display: flex;
+      align-items: end;
+      color: white;
+      background:
+        linear-gradient(to top, rgba(0,0,0,0.58), rgba(0,0,0,0.18)),
+        url("https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+    }
+
+    .hero-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 120px 0 64px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: #d6dfbf;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 0.82rem;
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 500;
+      line-height: 1.05;
+      margin: 0 0 18px;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      max-width: 800px;
+    }
+
+    .hero p {
+      max-width: 760px;
+      font-size: 1.12rem;
+      color: rgba(255,255,255,0.92);
+      margin-bottom: 32px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border: 1px solid rgba(255,255,255,0.7);
+      color: white;
+      transition: 0.2s ease;
+    }
+
+    .btn.primary {
+      background: var(--olive);
+      border-color: var(--olive);
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      opacity: 0.96;
+    }
+
+    section {
+      padding: 88px 0;
+    }
+
+    .section-heading {
+      max-width: 760px;
+      margin-bottom: 38px;
+    }
+
+    .section-heading .line {
+      width: 64px;
+      height: 2px;
+      background: var(--olive);
+      margin-bottom: 26px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      margin-bottom: 16px;
+    }
+
+    .section-heading p {
+      font-size: 1.06rem;
+      max-width: 720px;
+    }
+
+    .stats {
+      background: var(--charcoal);
+      color: white;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+
+    .stat {
+      padding: 20px 12px;
+    }
+
+    .stat-number {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 3rem;
+      color: #b6c48a;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 560px;
+      object-fit: cover;
+    }
+
+    .quote {
+      border-left: 3px solid var(--olive);
+      padding-left: 18px;
+      margin-top: 28px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2rem;
+      line-height: 1.2;
+      color: #5d634a;
+    }
+
+    .features {
+      background: var(--warm);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.5);
+      padding: 28px;
+      min-height: 210px;
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .card h3 {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .dark-section {
+      background: var(--charcoal);
+      color: white;
+    }
+
+    .event-list {
+      display: grid;
+      gap: 28px;
+    }
+
+    .event-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 22px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .event-tag {
+      color: #b6c48a;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.82rem;
+    }
+
+    .event-item h3 {
+      font-size: 2.2rem;
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 18px;
+    }
+
+    .gallery-grid .stack {
+      display: grid;
+      gap: 18px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .gallery-large {
+      min-height: 520px;
+    }
+
+    .gallery-small {
+      min-height: 251px;
+    }
+
+    .cta {
+      background:
+        linear-gradient(to top, rgba(0,0,0,0.52), rgba(0,0,0,0.20)),
+        url("https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+      color: white;
+      text-align: center;
+    }
+
+    .cta-box {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .cta h2 {
+      font-size: clamp(2.8rem, 6vw, 4.8rem);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .contact-card {
+      background: #e2dbcf;
+      padding: 28px;
+    }
+
+    .contact-list p {
+      margin: 0 0 18px;
+    }
+
+    .footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,0.82);
+      padding: 34px 0;
+      font-size: 0.95rem;
+    }
+
+    .footer .container {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+
+      .stats-grid,
+      .about-grid,
+      .card-grid,
+      .contact-grid,
+      .gallery-grid,
+      .event-item {
+        grid-template-columns: 1fr;
+      }
+
+      .about-image img {
+        height: 420px;
+      }
+
+      .gallery-large,
+      .gallery-small {
+        min-height: auto;
+      }
+
+      section {
+        padding: 68px 0;
+      }
+
+      .brand-text strong {
+        font-size: 1.5rem;
+      }
+
+      h1 {
+        max-width: 620px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="#" class="brand">
+        <div class="brand-mark">●</div>
+        <div class="brand-text">
+          <strong>Dorchester</strong>
+          <span>Community Farm</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#offer">What We Have</a>
+        <a href="#events">Events</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Get Involved</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Poundbury, Dorchester</div>
+      <h1>Growing food.<br>Building community.</h1>
+      <p>
+        A community-run permaculture farm on the edge of Poundbury,
+        open to everyone who wants to grow, learn, and connect with the land.
+      </p>
+      <div class="hero-buttons">
+        <a class="btn primary" href="#contact">Get involved</a>
+        <a class="btn" href="#about">Learn more</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="container stats-grid">
+      <div class="stat">
+        <div class="stat-number">2010</div>
+        <div class="stat-label">Founded</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">2×</div>
+        <div class="stat-label">Work sessions per week</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">∞</div>
+        <div class="stat-label">Welcomes all</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">1</div>
+        <div class="stat-label">Acre of growing space</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container about-grid">
+      <div>
+        <div class="section-heading">
+          <div class="line"></div>
+          <h2>An outdoor village hall for the whole of Dorchester</h2>
+          <p>
+            Dorchester Community Farm was established in 2010 as a project of
+            Transition Town Dorchester, on land owned by the Duchy of Cornwall
+            on the edge of Poundbury.
+          </p>
+          <p>
+            What began as a small growing project has grown into a thriving
+            community space where people of all ages and backgrounds come to
+            grow food, share skills, and build connection.
+          </p>
+        </div>
+
+        <div class="quote">
+          “The biggest changes that are going to happen are going to be at the local level.”
+        </div>
+      </div>
+
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1000&q=80" alt="Farm growing space">
+      </div>
+    </div>
+  </section>
+
+  <section id="offer" class="features">
+    <div class="container">
+      <div class="section-heading">
+        <div class="line"></div>
+        <h2>What the farm has to offer</h2>
+        <p>
+          From polytunnel to pond, orchard to wildlife habitat, the farm is a richly layered
+          growing space designed to work with nature.
+        </p>
+      </div>
+
+      <div class="card-grid">
+        <div class="card">
+          <h3>Permaculture growing</h3>
+          <p>Raised beds, polytunnel, and forest garden cultivated using regenerative growing principles.</p>
+        </div>
+        <div class="card">
+          <h3>Heritage orchard</h3>
+          <p>A community orchard of heritage apple and pear varieties, planted by local schoolchildren.</p>
+        </div>
+        <div class="card">
+          <h3>Beekeeping</h3>
+          <p>Bee colonies maintained on site, supporting pollination across the farm and wider community.</p>
+        </div>
+        <div class="card">
+          <h3>Poultry & wildlife</h3>
+          <p>Resident hens and geese roam the orchard, while the pond supports native biodiversity.</p>
+        </div>
+        <div class="card">
+          <h3>Off-grid aims</h3>
+          <p>No mains water, rainwater harvesting, low-carbon aims, and practical sustainability throughout.</p>
+        </div>
+        <div class="card">
+          <h3>Forest garden</h3>
+          <p>A developing woodland and forest garden area with plans for forest school and youth engagement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="events" class="dark-section">
+    <div class="container">
+      <div class="section-heading">
+        <div class="line"></div>
+        <h2>Farm sessions & events</h2>
+        <p>
+          The farm is open to anyone. Come for a morning, a day, or make it a regular part of your week.
+        </p>
+      </div>
+
+      <div class="event-list">
+        <div class="event-item">
+          <div class="event-tag">Every Tuesday</div>
+          <div>
+            <h3>Farm Work Morning</h3>
+            <p>Join us for a morning of growing, tending, and learning. All welcome, no experience needed.</p>
+          </div>
+        </div>
+
+        <div class="event-item">
+          <div class="event-tag">Every Saturday</div>
+          <div>
+            <h3>Farm Work Day</h3>
+            <p>Our main weekly session. Come for an hour or the whole day. Bring gloves and enthusiasm.</p>
+          </div>
+        </div>
+
+        <div class="event-item">
+          <div class="event-tag">Autumn</div>
+          <div>
+            <h3>Apple Day</h3>
+            <p>Our annual celebration of the heritage orchard with pressing, tasting, music, and community.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="container">
+      <div class="section-heading">
+        <div class="line"></div>
+        <h2>Life on the farm</h2>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-large">
+          <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1200&q=80" alt="Farm beds">
+        </div>
+        <div class="stack">
+          <div class="gallery-small">
+            <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=900&q=80" alt="Farm landscape">
+          </div>
+          <div class="gallery-small">
+            <img src="https://images.unsplash.com/photo-1471193945509-9ad0617afabf?auto=format&fit=crop&w=900&q=80" alt="Goose or farm life">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container cta-box">
+      <div class="eyebrow">Join us at the farm</div>
+      <h2>Grown together, shared together</h2>
+      <p>
+        The Community Farm is open to anyone interested in joining in.
+        Whether you have never sown a seed or you are a seasoned grower,
+        there is a place for you here.
+      </p>
+      <div class="hero-buttons" style="justify-content:center;">
+        <a class="btn primary" href="#contact">Get involved</a>
+      </div>
     </div>
   </section>
 
   <section id="contact">
-    <div class="card">
-      <h2>Contact</h2>
-      <p>Follow us on Instagram and get in touch for updates, events and enquiries.</p>
+    <div class="container">
+      <div class="section-heading">
+        <div class="line"></div>
+        <h2>Come and muck in</h2>
+        <p>
+          Share growing space, tools, knowledge, ideas, and work — and harvest produce together.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Find us</h3>
+          <div class="contact-list">
+            <p><strong>Location</strong><br>Edge of Poundbury, Dorchester, Dorset</p>
+            <p><strong>Sessions</strong><br>Tuesdays & Saturdays — see social media for times</p>
+            <p><strong>Access</strong><br>Free to attend. All welcome.</p>
+          </div>
+        </div>
+
+        <div>
+          <h3>Contact</h3>
+          <p>Email / general enquiries</p>
+          <p>Instagram: @dorchestercommunityfarm</p>
+          <p>Facebook: Dorchester Community Farm</p>
+          <p>Linktree: linktr.ee/DorchesterCommunityFarm</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <footer>
-    <p>© 2026 Your Farm Name</p>
+  <footer class="footer">
+    <div class="container">
+      <div>© 2026 Dorchester Community Farm</div>
+      <div>A project of Transition Town Dorchester</div>
+    </div>
   </footer>
 
 </body>
